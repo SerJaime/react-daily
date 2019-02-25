@@ -1,6 +1,6 @@
 module.exports = {
+  modules: true,
   plugins: [
-    require('autoprefixer'),
-    require('cssnext')
+    require('autoprefixer')
   ]
 }

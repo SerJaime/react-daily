@@ -22,6 +22,7 @@ app.all('*', function(req, res, next) {
 });
 
 app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 routes(app);
 

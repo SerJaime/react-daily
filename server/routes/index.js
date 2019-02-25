@@ -14,10 +14,10 @@ module.exports = function (app) {
     res.sendFile(resolve(__dirname, '../../dist/index.html'));
   })
 
-  app.get('/api/news/latest', async (req, res) => {
+  app.get('/api/news/top', async (req, res) => {
     try {
       const result = await axios.get('/api/4/news/latest');
-      res.json(result);
+      res.json(result.top_stories);
     } catch (err) {
       res.sendStatus(500);
     }
