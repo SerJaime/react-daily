@@ -10,7 +10,7 @@ axios.interceptors.response.use(res => {
 });
 
 module.exports = function (app) {
-  app.get('/', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(resolve(__dirname, '../../dist/index.html'));
   })
 
