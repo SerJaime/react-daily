@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const axios = require('axios');
+const request = require('request');
 const BASE_URL = 'https://news-at.zhihu.com';
 
 axios.defaults.baseURL = BASE_URL;
@@ -10,7 +11,7 @@ axios.interceptors.response.use(res => {
 });
 
 module.exports = function (app) {
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(resolve(__dirname, '../../dist/index.html'));
   })
 
@@ -100,5 +101,23 @@ module.exports = function (app) {
     } catch (err) {
       res.sendStatus(500);
     }
+  })
+
+  app.get('/img', async (req, res) => {
+    const url = req.query.url;
+    const options = {
+      url: url,
+      encoding: null
+    };
+
+    function callback (error, response, body) {
+      if (!error && response.statusCode === 200) {
+        const contentType = response.headers['content-type'];
+        res.header('Content-Type', contentType);
+        res.header('Access-Control-Allow-Origin', '*');
+        res.end(body);
+      }
+    }
+    request.get(options, callback);
   })
 }

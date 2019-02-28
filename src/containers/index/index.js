@@ -7,7 +7,7 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-  changeHomeData() {
+  changeIndexData() {
     dispatch(actionCreators.getBanners());
   }
 });

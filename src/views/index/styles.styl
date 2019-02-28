@@ -1,0 +1,42 @@
+@import "../../assets/styles/varibles.styl"
+  
+.imgWrapper
+  overflow: hidden
+  position: relative
+  padding-bottom: 58.6667%
+  background-color: #ddd
+  h2
+    position: absolute
+    bottom: px2rem(12)
+    padding: px2rem(15)
+    color: $lightTextColor
+    font-size: px2rem(18)
+    letter-spacing: px2rem(3)
+    z-index: 10
+  img 
+    position: absolute
+    top: -43px
+    height: auto
+
+:global(.swiper-pagination-wrapper)
+  position: absolute
+  left: 0
+  bottom: px2rem(8)
+  width: 100%
+  text-align: center
+  z-index: 10
+:global(.swiper-pagination-wrapper > .swiper-pagination)
+  position: relative
+  display: inline-block
+  padding: 0 px2rem(7.52)
+  z-index: 0
+:global(.swiper-pagination-bullet)
+  float: left
+  width: px2rem(8)
+  height: @width
+  margin: 0 px2rem(3)
+  border-radius: 50%
+  background-color: rgba(255, 255, 255, 0.4)
+  opacity: 1
+:global(.swiper-pagination-bullet-active)
+  background-color: #ffffff
