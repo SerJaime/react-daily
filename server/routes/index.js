@@ -24,6 +24,15 @@ module.exports = function (app) {
     }
   })
 
+  app.get('/api/news/latest', async (req, res) => {
+    try {
+      const result = await axios.get('/api/4/news/latest');
+      res.json(result);
+    } catch (err) {
+      res.sendStatus(500);
+    }
+  })
+
   app.get('/api/news/hot', async (req, res) => {
     try {
       const result = await axios.get('/api/3/news/hot');

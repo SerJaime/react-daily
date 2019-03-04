@@ -2,12 +2,14 @@ import { fromJS } from 'immutable';
 import * as constants from "./constants";
 
 const defaultState = fromJS({
-  banners: []
+  banners: [],
+  todayNews: []
 })
 
 const changeHomeData = (state, action) => {
   return state.merge({
-    banners: fromJS(action.banners)
+    banners: fromJS(action.banners),
+    todayNews: fromJS(action.todayNews)
   });
 };
 
