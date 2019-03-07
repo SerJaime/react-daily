@@ -1,16 +1,20 @@
-const Util = {};
+import moment from 'moment';
+import 'moment/locale/zh-cn'
+moment.locale('zh-cn');
 
-// 获取上一天日期
-Util.getToday = function (timestamp = (new Date()).getTime()) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1 < 10
-      ? '0' + (date.getMonth() + 1)
-      : date.getMonth() + 1;
-  const day = date.getDate() < 10
-      ? '0' + date.getDate()
-      : date.getDate();
-  return year + '' + month + '' + day;
-};
+// 获取今天日期
+const getToday = () => moment().format('YYYYMMDD');
 
-export default Util;
+// 获取某一天日期
+const getDay = (day = getToday()) => moment(day, 'YYYYMMDD');
+
+// 获取某一天之前的日期
+const getDayBefore = (d, origin = getToday()) => getDay(origin).subtract(d, 'days').format('YYYYMMDD');
+
+const formatDate = (day) => {
+  const date = getDay(day);
+  const week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+  return date.format(`MM 月 DD 日 ${week[date.day()]}`);
+}
+
+export { getToday, getDayBefore, formatDate };

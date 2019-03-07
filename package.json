@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "rimraf dist && rimraf .cache && parcel ./src/index.html",
-    "build": "rimraf dist && rimraf .cache && parcel build src/index.html --no-cache -d dist --public-url /",
+    "build": "rimraf dist && rimraf .cache && parcel build src/index.html --no-source-maps --no-cache -d dist --public-url /",
     "server": "node server"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "better-scroll": "^1.14.1",
     "immutable": "^4.0.0-rc.12",
+    "moment": "^2.24.0",
     "react": "^16.4.0-0",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",

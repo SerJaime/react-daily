@@ -1,6 +1,6 @@
 import * as constants from './constants';
 import axios from 'axios';
-import { getToday } from '../../../util';
+import { getToday, getDayBefore } from '../../../util';
 
 const changeIndexData = (result) => ({
   type: constants.CHANGE_INDEX_DATA,
@@ -13,30 +13,40 @@ export const getLatestNews = () => {
     axios.get('/news/latest').then((res) => {
       const result = res;
       dispatch(changeIndexData(result));
-    }).catch(() => {
-      console.log('error');
+    }).catch((err) => {
+      console.log(err);
     })
   }
 }
 
-export const getBanners = () => {
+export const toggleIsPullUpLoad = isLoad => ({
+  type: constants.TOGGLE_ISPULLUPLOAD,
+  isLoad
+})
+
+const addBeforeNews = list => ({
+  type: constants.ADD_NEWS_LIST,
+  list
+})
+
+export const loadMoreNewsOf3 = updatedDate => {
   return (dispatch) => {
-    axios.get('/news/top').then((res) => {
+    console.log(updatedDate);
+    axios.get(`/news/before/${getDayBefore(1, updatedDate)}`).then((res) => {
       const result = res;
-      dispatch(changeIndexData(result));
-    }).catch(() => {
-      console.log('error');
+      dispatch(addBeforeNews(result));
+    }).catch((err) => {
+      console.log(err);
     })
   }
 }
 
-export const getTodayNews = () => {
-  return (dispatch) => {
-    axios.get(`/news/before/${getToday()}`).then((res) => {
-      const result = res;
-      dispatch(changeIndexData(result));
-    }).catch(() => {
-      console.log('error');
-    })
-  }
-}
+export const changeUpdatedDay = updatedDate => ({
+  type: constants.CHANGE_UDATED_DATE,
+  updatedDate
+})
+
+export const toggleHeaderShow = showHeader => ({
+  type: constants.TOGGLE_HEADER_SHOW,
+  showHeader
+})

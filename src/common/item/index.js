@@ -7,10 +7,10 @@ function Item(props) {
     <div className={styles.itemList}>
       <div className={styles.item}>
         <div className={styles.itemTitle}>
-          {props.item.get('title')}
+          {props.item.title}
         </div>
         <div className={styles.itemImg}>
-          <img src={`${props.context.PIC_URL}${props.item.get('images').first()}`} />
+          <img src={`${props.context.PIC_URL}${props.item.images[0]}`} />
         </div>
       </div>
     </div>

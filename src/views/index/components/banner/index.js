@@ -8,10 +8,10 @@ class Banner extends Component {
   componentDidMount() {
     this.swiper = new Swiper('.swiper-container', {
       loop: true,
-  //     autoplay:{ //自动播放，注意：直接给autoplay:true的话，在点击之后不能再自动播放了
-  //       delay: 2500,
-  //       disableOnInteraction: false, //户操作swiper之后，是否禁止autoplay。默认为true：停止。
-  //     },
+      autoplay:{ //自动播放，注意：直接给autoplay:true的话，在点击之后不能再自动播放了
+        delay: 5000,
+        disableOnInteraction: false, //户操作swiper之后，是否禁止autoplay。默认为true：停止。
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true, // 允许点击跳转
