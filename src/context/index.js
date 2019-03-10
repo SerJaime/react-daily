@@ -1,7 +1,8 @@
 import * as React from "react";
+import { URL_PICTURE } from '../api/url';
 
 export const context = {
-  PIC_URL: 'http://127.0.0.1:3000/img?url='
+  URL_PICTURE
 };
 
 export default React.createContext(context);

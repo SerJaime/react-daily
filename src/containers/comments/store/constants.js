@@ -1,0 +1,2 @@
+export const CHANGE_LONG_COMMENTS = 'comments/CHANGE_LONG_COMMENTS';
+export const CHANGE_SHORT_COMMENTS = 'comments/CHANGE_SHORT_COMMENTS';

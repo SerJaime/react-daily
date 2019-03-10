@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../../common/header';
 import Banner from './components/banner';
 import Item from '../../common/item';
@@ -23,7 +24,6 @@ class Index extends Component {
       const { changeIsPullUpLoad, changeUpdatedDay, beforeNewsList } = this.props;
       changeIsPullUpLoad(false);
       changeUpdatedDay(beforeNewsList.last().date);
-      console.log('finish load');
       this.scroll.refresh();
     }
   }
@@ -60,6 +60,14 @@ class Index extends Component {
       </Fragment>
     )
   }
+}
+
+Index.propsTypes = {
+  banners: PropTypes.array,
+  showHeader: PropTypes.bool,
+  todayNews: PropTypes.array,
+  updatedDate: PropTypes.string,
+  beforeNewsList: PropTypes.array
 }
 
 export default Index;

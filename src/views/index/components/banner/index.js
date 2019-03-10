@@ -3,6 +3,7 @@ import { Consumer } from '../../../../context/Consumer';
 import Swiper from 'swiper/dist/js/swiper.js';
 import "swiper/dist/css/swiper.css";
 import styles from '../../styles.styl';
+import { Link } from 'react-router-dom';
 
 class Banner extends Component {
   componentDidMount() {
@@ -27,15 +28,15 @@ class Banner extends Component {
 
   render() {
     const { banners } = this.props;
-    const { PIC_URL } = this.props.context;
+    const { URL_PICTURE } = this.props.context;
     const bannerElements = banners.map((banner) => (
       <div className="swiper-slide" key={banner.get('id')}>
-        <a href={banner.get('url')}>
+        <Link to={`/detail/${banner.get('id')}`}>
           <div className={styles.imgWrapper}>
             <h2>{banner.get('title')}</h2>
-            <img src={`${PIC_URL}${banner.get('image')}`} width="100%" height="100%" />
+            <img src={`${URL_PICTURE}${banner.get('image')}`} width="100%" height="100%" />
           </div>
-        </a>
+        </Link>
       </div>
     ));
 

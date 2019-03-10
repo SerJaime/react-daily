@@ -19,6 +19,8 @@
 - express
 - immutable
 - better-scroll
+- swiper
+- moment.js
 
 ## 初步设计
 
@@ -51,6 +53,8 @@
 - /history 历史记录
 
 ### 后端接口
+
+接口 http://localhost:3000
 
 - api/news/top 获取轮播文章 
 - api/news/hot 热门文章

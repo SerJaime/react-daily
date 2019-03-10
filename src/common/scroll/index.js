@@ -9,8 +9,10 @@ class Scroll extends Component {
     if (!this.bScroll) {
       this.bScroll = new BScroll(this.scrollView, {
         pullUpLoad: true,
+        click: true,
         // 实时派发scroll事件
         probeType: 1,
+        click: this.props.click 
       });
 
       if (this.props.onPullingUp) {
@@ -33,7 +35,6 @@ class Scroll extends Component {
     if (this.bScroll) {
       this.bScroll.refresh();
       this.bScroll.finishPullUp();
-      console.log('fresh')
     }
   }
   render() {
@@ -49,13 +50,15 @@ class Scroll extends Component {
 Scroll.propTypes = {
   onPullingUp: PropTypes.func,
   pullUpLoad: PropTypes.bool,
-  onScroll: PropTypes.func
+  onScroll: PropTypes.func,
+  click: PropTypes.bool
 };
 
 Scroll.defaultProps = {
   onPullingUp: null,
   pullUpLoad: true,
-  onScroll: null
+  onScroll: null,
+  click: true
 };
 
 export default Scroll

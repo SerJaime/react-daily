@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { actionCreators } from './store';
-import Index from "../../views/index/index";
+import Index from "../../views/index";
 
 const mapState = (state) => ({
   showHeader: state.getIn(['index', 'showHeader']),
@@ -13,7 +13,6 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
   changeHeaderShow(scroll) {
-    console.log(scroll)
     if (scroll.y < -220) {
       dispatch(actionCreators.toggleHeaderShow(true));
     } else {
@@ -24,7 +23,6 @@ const mapDispatch = (dispatch) => ({
     dispatch(actionCreators.getLatestNews());
   },
   loadMoreNews(updatedDate) {
-    console.log('loading');
     dispatch(actionCreators.toggleIsPullUpLoad(true));
     dispatch(actionCreators.loadMoreNewsOf3(updatedDate));
   },

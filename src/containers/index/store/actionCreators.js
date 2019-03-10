@@ -31,7 +31,6 @@ const addBeforeNews = list => ({
 
 export const loadMoreNewsOf3 = updatedDate => {
   return (dispatch) => {
-    console.log(updatedDate);
     axios.get(`/news/before/${getDayBefore(1, updatedDate)}`).then((res) => {
       const result = res;
       dispatch(addBeforeNews(result));

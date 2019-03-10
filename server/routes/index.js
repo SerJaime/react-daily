@@ -57,7 +57,12 @@ module.exports = function (app) {
     const id = req.params.id;
     try {
       const result = await axios.get(`/api/4/news/${id}`);
-      res.json(result);
+      const extraInfo = await axios.get(`/api/4/story-extra/${id}`);
+      const detail = {
+        ...result,
+        comments: extraInfo.comments
+      }
+      res.json(detail);
     } catch (err) {
       res.sendStatus(500);
     }

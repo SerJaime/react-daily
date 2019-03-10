@@ -3,7 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import styles from './App.styl';
 import Index from './containers/index';
-import Detail from './views/detail';
+import Detail from './containers/detail';
+import Comments from './containers/comments';
 import Hot from './views/hot';
 import History from './views/history';
 import Sections from './views/sections';
@@ -21,6 +22,7 @@ class App extends Component {
               <Switch>
                 <Route path='/' exact component={Index} />
                 <Route path='/detail/:newsId' component={Detail} />
+                <Route path='/comments/:newsId' component={Comments} />
                 <Route path='/hot' component={Hot} />
                 <Route path='/history' component={History} />
                 <Route path='/sections' component={Sections} />

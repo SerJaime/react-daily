@@ -14,11 +14,13 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  showHeader: PropTypes.bool
+  showHeader: PropTypes.bool,
+  title: PropTypes.string
 }
 
 Header.defaultProps = {
-  showHeader: false
+  showHeader: true,
+  title: ''
 }
 
 export default Header;
