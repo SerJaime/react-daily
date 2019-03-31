@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { Route } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { Consumer } from '../../context/Consumer';
 import Scroll from '../../common/scroll';

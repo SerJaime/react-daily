@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import styles from './styles.styl';
 
 class Header extends Component {
+  static defaultProps = {
+    showHeader: true,
+    title: ''
+  }
+
   render() {
     const { title, showHeader } = this.props;
     return (
@@ -16,11 +21,6 @@ class Header extends Component {
 Header.propTypes = {
   showHeader: PropTypes.bool,
   title: PropTypes.string
-}
-
-Header.defaultProps = {
-  showHeader: true,
-  title: ''
 }
 
 export default Header;
