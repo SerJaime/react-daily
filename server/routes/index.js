@@ -2,6 +2,8 @@ const { resolve } = require('path');
 const axios = require('axios');
 const request = require('request');
 const BASE_URL = 'https://news-at.zhihu.com';
+const moment = require('moment');
+moment.locale('zh-cn');
 
 axios.defaults.baseURL = BASE_URL;
 axios.interceptors.response.use(res => {
@@ -44,7 +46,7 @@ module.exports = function (app) {
 
   app.get('/api/news/before/:day', async (req, res) => {
     const today = req.params.day;
-    const nextDay = parseInt(today) + 1;
+    const nextDay = moment(today, 'YYYYMMDD').add(1, 'days').format('YYYYMMDD');
     try {
       const result = await axios.get(`/api/4/news/before/${nextDay}`);
       res.json(result);

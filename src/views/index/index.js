@@ -5,18 +5,46 @@ import Banner from './components/banner';
 import Item from '../../common/item';
 import Scroll from '../../common/scroll';
 import styles from './styles.styl';
-import { formatDate } from '../../util';
+import { formatDate, throttle, getStyle } from '../../util';
 
 class Index extends Component {
   constructor(props) {
     super(props);
 
+    this.isChanging = false;
+    this.PAGEWIDTH = 0
+
     this.handlePullingUp = this.handlePullingUp.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll = throttle(this.handleScroll, 16).bind(this);
+    this.getPageWidth = this.getPageWidth.bind(this);
+  }
+
+  setIsChanging(value){
+    this.isChanging = value;
+  }
+
+  getIsChanging() {
+    return this.isChanging;
+  }
+
+  setHeaderBackground(transparence) {
+    this.header.headerElement.style.backgroundColor = `rgba(2, 143, 214, ${transparence})`;
+  }
+
+  getPageWidth() {
+    console.log(this)
+    this.PAGEWIDTH = parseInt(getStyle(this.header.headerElement, 'width'))
+    console.log(this.PAGEWIDTH);
   }
   
   componentDidMount() {
     this.props.changeIndexData();
+    this.getPageWidth();
+    window.addEventListener('resize', this.getPageWidth)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.getPageWidth)
   }
 
   componentDidUpdate(preProps) {
@@ -34,11 +62,27 @@ class Index extends Component {
   }
 
   handleScroll(scroll) {
-    this.props.changeHeaderShow(scroll);
+    const HEIGHT = this.PAGEWIDTH * 0.586667;
+    const STARTCHANGEY = HEIGHT * 0.22727;
+    const scrollY = scroll.y >= 0 ? 0 : -scroll.y;
+    const changing = scrollY >= STARTCHANGEY && scrollY <= HEIGHT;
+    const transparence = changing ?  (scrollY - STARTCHANGEY) / (HEIGHT - STARTCHANGEY) : scrollY < STARTCHANGEY ? 0 : 1;
+    if (changing) {
+      this.setHeaderBackground(transparence);
+      console.log(this.header.headerElement.style.backgroundColor);
+      this.setIsChanging(true);
+    } else {
+      if (this.getIsChanging()) {
+        this.setHeaderBackground(transparence);
+        console.log(this.header.headerElement.style.backgroundColor);
+      }
+      this.setIsChanging(false);
+    }
+    
   }
 
   render() {
-    const { showHeader, banners, todayNews, isPullUpLoad, beforeNewsList, loadMoreNews, updatedDate } = this.props;
+    const { showHeader, banners, todayNews, isPullUpLoad, beforeNewsList } = this.props;
     const oneDayList = listWithDate => (
       <div key={listWithDate.date}>
         <div id={listWithDate.date} className={styles.dateBar}>{formatDate(listWithDate.date)}</div>
@@ -48,7 +92,7 @@ class Index extends Component {
     
     return (
       <Fragment>
-        <Header title="今日热闻" showHeader={showHeader} />
+        <Header title="今日热闻" transparence={0} ref={(el) => {this.header = el;}} />
         <Scroll onPullingUp={this.handlePullingUp} onScroll={this.handleScroll} ref={(el) => { this.scroll = el; }}>
           <div style={{minHeight: '101%'}}>
             {banners.size === 0 ? null : <Banner banners={banners} />}

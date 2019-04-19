@@ -6,7 +6,6 @@
   left: 0
   right: 0
   height: $headerHeight
-  background-color: transparent
   color: $lightTextColor
   text-align: center
   line-height: $headerHeight
@@ -15,3 +14,15 @@
 
 .transparent
   background-color: $themeColor
+
+:global
+  .transparent-enter
+    transition: all .4s ease-out
+  .transparent-enter-active
+    background-color: $themeColor
+  .transparent-enter-done
+    background-color: $themeColor
+  .transparent-exit
+    transition: all .4s ease-out
+  .transparent-exit-active
+    background-color: transparent

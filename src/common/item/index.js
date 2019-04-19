@@ -2,6 +2,7 @@ import React from 'react';
 import { Consumer } from '../../context/Consumer';
 import styles from './styles.styl';
 import { Link } from 'react-router-dom';
+import LazyImage from "../lazyImage/lazy-image";
 
 function Item(props) {
   return (
@@ -10,7 +11,9 @@ function Item(props) {
         {props.item.title}
       </div>
       <div className={styles.itemImg}>
-        <img src={`${props.context.URL_PICTURE}${props.item.images[0]}`} />
+        <LazyImage
+          src={`${props.context.URL_PICTURE}${props.item.images[0]}`}
+        />
       </div>
     </Link>
   )
