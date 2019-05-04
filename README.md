@@ -28,17 +28,17 @@
 
 首页 index
 
-![](https://ws1.sinaimg.cn/large/0072Lfvtly1g0ugnyfsuqj30ku1127hs.jpg)
-![](https://ws1.sinaimg.cn/large/0072Lfvtly1g0ugqaat5fj30ku1127do.jpg)
+![](http://cdn.serjaime.xin/test/0072Lfvtly1g0ugnyfsuqj30ku1127hs.jpg?imageView2/2/w/300/q/75|imageslim)
+![](http://cdn.serjaime.xin/test/0072Lfvtly1g0ugqaat5fj30ku1127do.jpg?imageView2/2/w/300/q/75|imageslim)
 
 详情 detail
 
-![](https://ws1.sinaimg.cn/large/0072Lfvtly1g0ugsi686kj30ku112to4.jpg)
-![](https://ws1.sinaimg.cn/large/0072Lfvtly1g0ugt0470rj30ku112ws1.jpg)
+![](http://cdn.serjaime.xin/test/0072Lfvtly1g0ugsi686kj30ku112to4.jpg?imageView2/2/w/300/q/75|imageslim)
+![](http://cdn.serjaime.xin/test/0072Lfvtly1g0ugt0470rj30ku112ws1.jpg?imageView2/2/w/300/q/75|imageslim)
 
 讨论 comment
 
-![](https://ws1.sinaimg.cn/large/0072Lfvtly1g0ugtkfziyj30ku112wl7.jpg)
+![](http://cdn.serjaime.xin/test/0072Lfvtly1g0ugtkfziyj30ku112wl7.jpg?imageView2/2/w/300/q/75|imageslim)
 
 ### 前端路由：
 
@@ -48,8 +48,8 @@
 - /hot 热门文章
 - /sections 专栏列表
 - /detail/:id 文章详情
-    - comments 文章评论
-    长评 短评
+- /comments/:id 文章评论
+长评 短评
 - /history 历史记录
 
 ### 后端接口
