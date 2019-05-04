@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Header from '../../common/header';
 
 class Hot extends Component {
   render() {
@@ -6,7 +7,7 @@ class Hot extends Component {
     console.log(match)
     return (
       <Fragment>
-        <div>热门文章</div>
+        <Header title="热门文章" menu />
       </Fragment>
     )
   }

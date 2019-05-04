@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Header from '../../common/header';
 
 class History extends Component {
   render() {
@@ -6,7 +7,7 @@ class History extends Component {
     console.log(match)
     return (
       <Fragment>
-        <div>历史记录</div>
+        <Header title="历史记录" menu />
       </Fragment>
     )
   }

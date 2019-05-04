@@ -32,19 +32,17 @@ class Index extends Component {
   }
 
   getPageWidth() {
-    console.log(this)
     this.PAGEWIDTH = parseInt(getStyle(this.header.headerElement, 'width'))
-    console.log(this.PAGEWIDTH);
   }
   
   componentDidMount() {
     this.props.changeIndexData();
     this.getPageWidth();
-    window.addEventListener('resize', this.getPageWidth)
+    window.addEventListener('resize', this.getPageWidth);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.getPageWidth)
+    window.removeEventListener('resize', this.getPageWidth);
   }
 
   componentDidUpdate(preProps) {
@@ -69,12 +67,10 @@ class Index extends Component {
     const transparence = changing ?  (scrollY - STARTCHANGEY) / (HEIGHT - STARTCHANGEY) : scrollY < STARTCHANGEY ? 0 : 1;
     if (changing) {
       this.setHeaderBackground(transparence);
-      console.log(this.header.headerElement.style.backgroundColor);
       this.setIsChanging(true);
     } else {
       if (this.getIsChanging()) {
         this.setHeaderBackground(transparence);
-        console.log(this.header.headerElement.style.backgroundColor);
       }
       this.setIsChanging(false);
     }
@@ -92,7 +88,7 @@ class Index extends Component {
     
     return (
       <Fragment>
-        <Header title="今日热闻" transparence={0} ref={(el) => {this.header = el;}} />
+        <Header title="今日热闻" menu transparence={0} ref={(el) => {this.header = el;}} />
         <Scroll onPullingUp={this.handlePullingUp} onScroll={this.handleScroll} ref={(el) => { this.scroll = el; }}>
           <div style={{minHeight: '101%'}}>
             {banners.size === 0 ? null : <Banner banners={banners} />}

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import styles from './styles.styl';
 import { CSSTransition } from 'react-transition-group';
+import Menu from '../menu';
 
 class Header extends Component {
   static defaultProps = {
-    showHeader: true,
     title: '',
-    transparence: 1
+    transparence: 1,
+    menu: false
   }
 
   componentDidMount() {
@@ -15,16 +16,10 @@ class Header extends Component {
   }
 
   render() {
-    const { title, showHeader } = this.props;
+    const { title, menu } = this.props;
     return (
-      // <CSSTransition
-      //   in={showHeader}
-      //   timeout={300}
-      //   classNames="transparent"
-      // >
-      //   <div className={`${styles.header} ${showHeader ? styles.transparent : null}`}>{title}</div>
-      // </CSSTransition>
       <div ref={(el) => {this.headerElement = el}} className={styles.header}>
+        {menu ? <Menu /> : null}
         {title}
       </div>
     )
@@ -32,9 +27,9 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  showHeader: PropTypes.bool,
   title: PropTypes.string,
-  transparence: PropTypes.number
+  transparence: PropTypes.number,
+  menu: PropTypes.bool
 }
 
 export default Header;

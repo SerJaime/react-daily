@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "rimraf dist && rimraf .cache && parcel ./src/index.html",
-    "build": "rimraf dist && rimraf .cache && parcel build src/index.html --no-source-maps --no-cache -d dist --public-url /",
+    "build": "rimraf dist && rimraf .cache && cross-env NODE_ENV=production parcel build src/index.html --no-source-maps --no-cache -d dist --public-url /",
     "server": "node server"
   },
   "dependencies": {

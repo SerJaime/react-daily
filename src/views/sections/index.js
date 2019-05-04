@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Header from '../../common/header';
 
 class Section extends Component {
   render() {
@@ -6,7 +7,7 @@ class Section extends Component {
     console.log(match)
     return (
       <Fragment>
-        <div>专栏</div>
+        <Header title="专栏" menu />
       </Fragment>
     )
   }
