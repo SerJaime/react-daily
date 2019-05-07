@@ -5,7 +5,7 @@ import styles from './App.styl';
 import Index from './containers/index';
 import Detail from './containers/detail';
 import Comments from './containers/comments';
-import Hot from './views/hot';
+import Hot from './containers/hot';
 import History from './views/history';
 import Sections from './views/sections';
 import store from './store';

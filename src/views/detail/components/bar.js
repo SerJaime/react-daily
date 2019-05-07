@@ -1,21 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from '../styles.styl';
 import { Link } from 'react-router-dom';
 
-function Bar(props) {
-  const { newsId, comments } = props;
+class Bar extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={styles.bottomBar}>
-      <Link to='/' className={styles.btn}>
-        <i className={`iconfont`}>&#xe61e;</i>
-      </Link>
-      <Link to={`/comments/${newsId}`} className={styles.btn}>
-        <i className={`iconfont`}>&#xe626;</i>
-        <span className={styles.commentTip}>{comments}</span>
-      </Link>
-    </div>
-  )
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.goBack();
+  }
+
+  render() {
+    const { newsId, comments } = this.props;
+
+    return (
+      <div className={styles.bottomBar}>
+        <a onClick={this.handleClick} className={styles.btn}>
+          <i className={`iconfont`}>&#xe61e;</i>
+        </a>
+        <Link to={`/comments/${newsId}`} replace className={styles.btn}>
+          <i className={`iconfont`}>&#xe626;</i>
+          <span className={styles.commentTip}>{comments}</span>
+        </Link>
+      </div>
+    )
+  }
 }
 
 export default Bar;

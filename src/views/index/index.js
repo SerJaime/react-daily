@@ -82,7 +82,7 @@ class Index extends Component {
     const oneDayList = listWithDate => (
       <div key={listWithDate.date}>
         <div id={listWithDate.date} className={styles.dateBar}>{formatDate(listWithDate.date)}</div>
-        {listWithDate.stories.map(item => (<Item key={item.id} item={item} />))}
+        {listWithDate.stories.map(item => (<Item key={item.news_id} item={item} />))}
       </div>
     )
     
@@ -92,7 +92,7 @@ class Index extends Component {
         <Scroll onPullingUp={this.handlePullingUp} onScroll={this.handleScroll} ref={(el) => { this.scroll = el; }}>
           <div style={{minHeight: '101%'}}>
             {banners.size === 0 ? null : <Banner banners={banners} />}
-            {todayNews.map((item) => (<Item key={item.get('id')} item={item.toJS()} />))}
+            {todayNews.map((item) => (<Item key={item.get('news_id')} item={item.toJS()} />))}
             {beforeNewsList.map(listWithDate => oneDayList(listWithDate))}
             <div className={styles.loadMoreTxt}>上拉加载更多</div>
           </div>

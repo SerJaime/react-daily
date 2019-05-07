@@ -34,7 +34,10 @@ class Menu extends Component {
   }
 
   handleTouchStart(e) {
-    const isMenu = e.path.some(item => item.className === styles.menu)
+    // const isMenu = e.path.some(item => item.className === styles.menu);
+    const classes = new Set([styles.menuItem, styles.menu, styles.menuBtn, 'targetIconfont']);
+    const targetClass = e.target.classList[0];
+    const isMenu = classes.has(targetClass);
     if (this.state.show && !isMenu) {
       this.hideMenu();
     }
@@ -58,7 +61,7 @@ class Menu extends Component {
     return (
       <div className={styles.menu}>
         <div className={styles.menuBtn} onClick={this.handleClick}>
-          <i className="iconfont">&#xe682;</i>
+          <i className="targetIconfont iconfont">&#xe682;</i>
         </div>
         {
           show ? 

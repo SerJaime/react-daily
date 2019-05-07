@@ -10,6 +10,7 @@ class Detail extends Component {
     super(props);
 
     this.handleScroll = this.handleScroll.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   componentDidMount() {
@@ -26,8 +27,12 @@ class Detail extends Component {
     }
   }
 
+  goBack() {
+    this.props.history.goBack();
+  }
+
   render() {
-    const { match, post, showBottomBar } = this.props;
+    const { post, showBottomBar } = this.props;
     const { URL_PICTURE } = this.props.context;
 
     return (
@@ -40,7 +45,7 @@ class Detail extends Component {
             <div dangerouslySetInnerHTML={{__html: post.body}}></div>
           </div>
         </Scroll>
-        {showBottomBar ? <Bar newsId={post.id} comments={post.comments} /> : null}
+        {showBottomBar ? <Bar newsId={post.id} comments={post.comments} goBack={this.goBack} /> : null}
       </Fragment>
     )
   }

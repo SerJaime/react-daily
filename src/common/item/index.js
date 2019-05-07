@@ -6,13 +6,13 @@ import LazyImage from "../lazyImage/lazy-image";
 
 function Item(props) {
   return (
-    <Link to={`/detail/${props.item.id}`} className={styles.item}>
+    <Link to={`/detail/${props.item.news_id}`} className={styles.item}>
       <div className={styles.itemTitle}>
         {props.item.title}
       </div>
       <div className={styles.itemImg}>
         <LazyImage
-          src={`${props.context.URL_PICTURE}${props.item.images[0]}`}
+          src={`${props.context.URL_PICTURE}${props.item.thumbnail}`}
         />
       </div>
     </Link>

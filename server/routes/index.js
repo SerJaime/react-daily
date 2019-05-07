@@ -29,7 +29,27 @@ module.exports = function (app) {
   app.get('/api/news/latest', async (req, res) => {
     try {
       const result = await axios.get('/api/4/news/latest');
-      res.json(result);
+      const stories = result.stories.map(item => {
+        const {id, title, images} = item;
+        return {
+          news_id: id,
+          title,
+          thumbnail: images[0]
+        }
+      });
+      const top_stories = result.top_stories.map(item => {
+        const {id, title, image} = item;
+        return {
+          news_id: id,
+          title,
+          thumbnail: image
+        }
+      });
+      res.json({
+        date: result.date,
+        top_stories,
+        stories
+      });
     } catch (err) {
       res.sendStatus(500);
     }
@@ -49,7 +69,18 @@ module.exports = function (app) {
     const nextDay = moment(today, 'YYYYMMDD').add(1, 'days').format('YYYYMMDD');
     try {
       const result = await axios.get(`/api/4/news/before/${nextDay}`);
-      res.json(result);
+      const stories = result.stories.map(item => {
+        const {id, title, images} = item;
+        return {
+          news_id: id,
+          title,
+          thumbnail: images[0]
+        }
+      });
+      res.json({
+        date: result.date,
+        stories
+      });
     } catch (err) {
       res.sendStatus(500);
     }

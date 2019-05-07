@@ -30,11 +30,11 @@ class Banner extends Component {
     const { banners } = this.props;
     const { URL_PICTURE } = this.props.context;
     const bannerElements = banners.map((banner) => (
-      <div className="swiper-slide" key={banner.get('id')}>
-        <Link to={`/detail/${banner.get('id')}`}>
+      <div className="swiper-slide" key={banner.get('news_id')}>
+        <Link to={`/detail/${banner.get('news_id')}`}>
           <div className={styles.imgWrapper}>
             <h2>{banner.get('title')}</h2>
-            <img src={`${URL_PICTURE}${banner.get('image')}`} width="100%" height="100%" />
+            <img src={`${URL_PICTURE}${banner.get('thumbnail')}`} width="100%" height="100%" />
           </div>
         </Link>
       </div>
